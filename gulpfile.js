@@ -55,6 +55,7 @@ gulp.task('js', function() {
 	gulp.src(jsSources)
 		.pipe(concat('script.js'))
 		.pipe(browserify())
+		.pipe(gulpif(env==='production', uglify()))
 		.pipe(gulp.dest(outputDir + 'js'))
 		.pipe(connect.reload())
 });
